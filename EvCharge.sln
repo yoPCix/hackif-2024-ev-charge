@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvCharge.Api", "EvCharge.Api\EvCharge.Api.csproj", "{A7CEEFA3-5258-4ACF-8A90-EA010F31D35A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvCharge.Api", "EvCharge.Api\EvCharge.Api.csproj", "{A7CEEFA3-5258-4ACF-8A90-EA010F31D35A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvCharge.ApiTests", "EvCharge.ApiTests\EvCharge.ApiTests.csproj", "{9437E571-002A-460B-81A9-925A8D877EBE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{A7CEEFA3-5258-4ACF-8A90-EA010F31D35A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7CEEFA3-5258-4ACF-8A90-EA010F31D35A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7CEEFA3-5258-4ACF-8A90-EA010F31D35A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9437E571-002A-460B-81A9-925A8D877EBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9437E571-002A-460B-81A9-925A8D877EBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9437E571-002A-460B-81A9-925A8D877EBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9437E571-002A-460B-81A9-925A8D877EBE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
