@@ -19,6 +19,7 @@ export type WaypointListItem = {
 export type WaypointListItemProps = WaypointListItem & {
 	isWaypoint?: boolean;
 	handleCheck: (isChecked: boolean) => void;
+	handleClick: () => void;
 };
 
 export const WaypointListItem: React.FC<WaypointListItemProps> = ({
@@ -27,6 +28,7 @@ export const WaypointListItem: React.FC<WaypointListItemProps> = ({
 	isWaypoint,
 	power,
 	handleCheck,
+	handleClick,
 }) => {
 	const [isChecked, setIsChecked] = useState(false);
 
@@ -63,7 +65,11 @@ export const WaypointListItem: React.FC<WaypointListItemProps> = ({
 				</TypographyUI>
 			</div>
 			<div className={cn("flex items-center")}>
-				<Button type={ButtonType.TONAL} size={ButtonSize.X_SMALL}>
+				<Button
+					type={ButtonType.TONAL}
+					size={ButtonSize.X_SMALL}
+					onClick={handleClick}
+				>
 					{isWaypoint ? "See more" : "See rates"}
 				</Button>
 			</div>

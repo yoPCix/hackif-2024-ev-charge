@@ -1,18 +1,39 @@
 import React, { useState } from "react";
 import { cn } from "@/utils/cn";
 import { Logo, LogoSize } from "@ids/react-logo";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { Box } from "../ui/Box";
 import { Container } from "../ui/Container";
-import { TypographyUI, TypographyUISize } from "@ids/react-typography";
+import {
+	TypographyUI,
+	TypographyUISize,
+	TypographyUIWeight,
+} from "@ids/react-typography";
 import { Ui16Cross, Ui16Menu, Ui24Cross } from "@ids/react-icons";
 
 const HeaderConstants = {
 	HEIGHT: 60,
 };
 
+type NavItem = {
+	path: string;
+	label: string;
+};
+
+const navItems: NavItem[] = [
+	{
+		path: "/",
+		label: "Home",
+	},
+	{
+		path: "/stations",
+		label: "Charging stations",
+	},
+];
+
 export const HeaderLayout: React.FC = () => {
 	const [isMenuExpanded, setIsMenuExpanded] = useState(false);
+	const { pathname } = useLocation();
 
 	const toggleExpandMenu = () => {
 		setIsMenuExpanded((_isMenuExpanded) => !_isMenuExpanded);
@@ -42,16 +63,30 @@ export const HeaderLayout: React.FC = () => {
 		<React.Fragment>
 			<div
 				className={cn(
-					"fixed left-0 right-0 bottom-0 bg-beige-200 border-t border-t-beige-500 transition-all origin-top duration-300 ease-in-out p-4 z-20",
+					"fixed left-0 right-0 bottom-0 z-30",
+					"bg-beige-200 border-t border-t-beige-500 transition-all origin-top duration-300 ease-in-out",
+					"flex flex-col p-4 gap-4",
 					isMenuExpanded ? "scale-y-100" : "scale-y-0 pointer-events-none"
 				)}
 				style={{ top: HeaderConstants.HEIGHT }}
 			>
-				test
+				{navItems.map(({ label, path }) => (
+					<Link key={label} to={path} onClick={() => setIsMenuExpanded(false)}>
+						<TypographyUI
+							weight={
+								path === pathname
+									? TypographyUIWeight.BOLD
+									: TypographyUIWeight.MEDIUM
+							}
+						>
+							{label}
+						</TypographyUI>
+					</Link>
+				))}
 			</div>
 			<div
 				className={cn(
-					"fixed left-0 right-0 bottom-0 bg-black z-10 pointer-events-none transition-colors",
+					"fixed left-0 right-0 bottom-0 bg-black z-20 pointer-events-none transition-colors",
 					isMenuExpanded ? "bg-black/50" : "bg-transparent"
 				)}
 				style={{ top: HeaderConstants.HEIGHT }}
@@ -76,8 +111,8 @@ export const HeaderLayout: React.FC = () => {
 				</Box>
 			</header>
 			<Box
-				variant="light"
-				className={cn("h-full")}
+				variant="normal"
+				className={cn("h-full overflow-hidden")}
 				style={{ paddingTop: HeaderConstants.HEIGHT }}
 			>
 				<Container className={cn("md:px-4 md:py-5 h-full")}>

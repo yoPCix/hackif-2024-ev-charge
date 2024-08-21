@@ -1,4 +1,4 @@
-import { WaypointListItem } from "@/components/pages/HomePage/WaypointListItem";
+import { WaypointListItem } from "@/components/adhoc/WaypointListItem";
 
 export const mockWaypoints: WaypointListItem[] = [
 	{
