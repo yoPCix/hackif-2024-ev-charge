@@ -1,66 +1,70 @@
 import { cn } from "@/utils/cn";
-import {
-	Button,
-	ButtonSize,
-	ButtonType,
-	ButtonVariant,
-} from "@ids/react-button";
+import { Button, ButtonSize, ButtonType } from "@ids/react-button";
+import { CheckboxInput } from "@ids/react-checkbox";
 import { Product24CameraFlash } from "@ids/react-icons";
-import { Tag, TagSize, TagVariant } from "@ids/react-tag";
 import {
 	TypographyHeading,
 	TypographyHeadingSize,
 	TypographyUI,
 	TypographyUISize,
 } from "@ids/react-typography";
-import React from "react";
+import React, { useState } from "react";
 
-export type WaypointListItemProps = {
+export type WaypointListItem = {
 	title: string;
 	subtitle: string;
 	power: number;
-	isVisited: boolean;
+};
+
+export type WaypointListItemProps = WaypointListItem & {
+	isWaypoint?: boolean;
+	handleCheck: (isChecked: boolean) => void;
 };
 
 export const WaypointListItem: React.FC<WaypointListItemProps> = ({
 	title,
 	subtitle,
-	isVisited,
+	isWaypoint,
 	power,
-	...props
+	handleCheck,
 }) => {
+	const [isChecked, setIsChecked] = useState(false);
+
 	return (
 		<li className={cn("flex border-b-2 border-b-beige-600 px-4 py-3 gap-3")}>
-			<div className={cn("flex flex-col gap-2")}>
-				<TypographyHeading size={TypographyHeadingSize.XX_SMALL}>
-					{title}
-				</TypographyHeading>
+			<div className={cn("flex flex-col gap-2 flex-grow")}>
+				<div className={cn("flex items-center gap-2")}>
+					<CheckboxInput
+						id={title}
+						checked={isChecked}
+						onChange={() => {
+							setIsChecked((_isChecked) => {
+								handleCheck(_isChecked);
+								return !_isChecked;
+							});
+						}}
+					/>
+					<TypographyHeading
+						size={TypographyHeadingSize.XX_SMALL}
+						className={cn("flex-grow")}
+					>
+						{title}
+					</TypographyHeading>
+					<TypographyUI
+						className={cn("flex items-center gap-0.5")}
+						size={TypographyUISize.SMALL}
+					>
+						<Product24CameraFlash />
+						{power}kW
+					</TypographyUI>
+				</div>
 				<TypographyUI size={TypographyUISize.SMALL} isQuiet>
 					{subtitle}
 				</TypographyUI>
 			</div>
-			<div className={cn("flex flex-col items-end gap-3 py-1.5")}>
-				<TypographyUI
-					className={cn("flex items-center gap-0.5")}
-					size={TypographyUISize.SMALL}
-				>
-					<Product24CameraFlash />
-					{power}kW
-				</TypographyUI>
-				{!isVisited && (
-					<Tag
-						as="span"
-						variant={TagVariant.WARNING}
-						size={TagSize.SMALL}
-						className={cn("scale-[0.85]")}
-					>
-						Not visited
-					</Tag>
-				)}
-			</div>
 			<div className={cn("flex items-center")}>
 				<Button type={ButtonType.TONAL} size={ButtonSize.X_SMALL}>
-					See rates
+					{isWaypoint ? "See more" : "See rates"}
 				</Button>
 			</div>
 		</li>

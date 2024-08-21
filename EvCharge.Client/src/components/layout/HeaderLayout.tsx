@@ -39,15 +39,24 @@ export const HeaderLayout: React.FC = () => {
 	);
 
 	const MenuSidebar = (
-		<div
-			className={cn(
-				"fixed left-0 right-0 bottom-0 bg-beige-200 border-t border-t-beige-500 transition-all origin-top duration-300 ease-in-out p-4",
-				isMenuExpanded ? "scale-y-100" : "scale-y-0 pointer-events-none"
-			)}
-			style={{ top: HeaderConstants.HEIGHT }}
-		>
-			test
-		</div>
+		<React.Fragment>
+			<div
+				className={cn(
+					"fixed left-0 right-0 bottom-0 bg-beige-200 border-t border-t-beige-500 transition-all origin-top duration-300 ease-in-out p-4 z-20",
+					isMenuExpanded ? "scale-y-100" : "scale-y-0 pointer-events-none"
+				)}
+				style={{ top: HeaderConstants.HEIGHT }}
+			>
+				test
+			</div>
+			<div
+				className={cn(
+					"fixed left-0 right-0 bottom-0 bg-black z-10 pointer-events-none transition-colors",
+					isMenuExpanded ? "bg-black/50" : "bg-transparent"
+				)}
+				style={{ top: HeaderConstants.HEIGHT }}
+			/>
+		</React.Fragment>
 	);
 
 	return (
@@ -66,8 +75,12 @@ export const HeaderLayout: React.FC = () => {
 					{MenuTrigger}
 				</Box>
 			</header>
-			<Box variant="light" style={{ paddingTop: HeaderConstants.HEIGHT }}>
-				<Container className={cn("md:px-4 md:py-5")}>
+			<Box
+				variant="light"
+				className={cn("h-full")}
+				style={{ paddingTop: HeaderConstants.HEIGHT }}
+			>
+				<Container className={cn("md:px-4 md:py-5 h-full")}>
 					<Outlet />
 				</Container>
 			</Box>

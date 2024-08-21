@@ -1,22 +1,24 @@
-import { WaypointListItemProps } from "@/components/pages/HomePage/WaypointListItem";
+import { WaypointListItem } from "@/components/pages/HomePage/WaypointListItem";
 
-export const mockWaypoints: WaypointListItemProps[] = [
+export const mockWaypoints: WaypointListItem[] = [
 	{
 		title: "Lielie Kangari",
 		subtitle: "Ropažu pagasts, Ropažu novads, LV-2135",
-		isVisited: true,
 		power: 50,
 	},
 	{
-		title: "MMX Energy",
-		subtitle: "Ropažu pagasts, Ropažu novads, LV-2135",
-		isVisited: false,
-		power: 50,
+		title: "Enefit Volt",
+		subtitle: "Tīraines ciems, Mārupes novads, LV-2167",
+		power: 22,
 	},
 	{
-		title: "Tūrkalne, Dolomīta šķembu karjers",
+		title: "Eleport",
 		subtitle: "Ropažu pagasts, Ropažu novads, LV-2135",
-		isVisited: false,
-		power: 50,
+		power: 200,
+	},
+	{
+		title: "Eleporter",
+		subtitle: "Ropažu pagasts, Ropažu novads, LV-2135",
+		power: 200,
 	},
 ];

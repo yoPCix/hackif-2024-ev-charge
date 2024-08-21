@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@ids/react-button": "^18.20.0",
+    "@ids/react-checkbox": "^18.20.0",
     "@ids/react-icons": "^18.20.0",
     "@ids/react-logo": "^18.20.0",
     "@ids/react-tag": "^18.20.0",
