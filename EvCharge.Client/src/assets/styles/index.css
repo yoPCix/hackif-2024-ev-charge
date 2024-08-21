@@ -2,6 +2,10 @@
 @tailwind utilities;
 @tailwind components;
 
+body {
+    @apply bg-beige-200;
+}
+
 @font-face {
     font-family: If Sans Thin;
     src: url(../fonts/IfSans-Thin.ttf);
@@ -31,4 +35,9 @@
 * {
     font-family: If Sans;
     font-weight: 400;
+}
+
+:root{
+    --ids-button-max-width: 100%;
+    --ids-button-width: auto;
 }

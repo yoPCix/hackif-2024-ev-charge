@@ -14,10 +14,13 @@
   },
   "dependencies": {
     "@ids/react-button": "^18.20.0",
+    "@ids/react-icon": "^18.20.0",
+    "@ids/react-logo": "^18.20.0",
     "@ids/style-scaffolding": "^18.20.0",
     "clsx": "^2.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.1",
     "tw-merge": "^0.0.1-alpha.3"
   },
   "devDependencies": {
