@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace EvCharge.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class PlacesController : ControllerBase
     {
         private readonly ILogger<StationsController> _logger;
