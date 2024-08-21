@@ -6,7 +6,7 @@ import { mockWaypoints } from "@/data/mock/waypoints";
 
 export const HomePage: React.FC = () => {
 	return (
-		<div className={cn("flex flex-col items-stretch gap-4")}>
+		<div className={cn("flex flex-col items-stretch")}>
 			<div className={cn("w-full aspect-square bg-red-500")}>
 				google map preview
 			</div>
