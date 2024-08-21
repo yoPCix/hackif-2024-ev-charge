@@ -1,0 +1,345 @@
+[
+	{
+		"GpsLocation": "56.950156, 24.105383",
+		"Name": "Riga Old Town",
+		"Address": "Rīga, LV-1050, Latvia",
+		"Website": "https://www.liveriga.com",
+		"Description": "The historic center of Riga, known for its cobblestone streets, medieval buildings, and vibrant atmosphere."
+	},
+	{
+		"GpsLocation": "56.955791, 24.106283",
+		"Name": "Freedom Monument",
+		"Address": "Brīvības bulvāris, Centra rajons, Rīga, LV-1050, Latvia",
+		"Website": "https://www.liveriga.com",
+		"Description": "A symbol of Latvian independence, this monument honors soldiers killed during the Latvian War of Independence."
+	},
+	{
+		"GpsLocation": "56.504702, 21.010857",
+		"Name": "Karosta Prison",
+		"Address": "Invalīdu iela 4, Liepāja, LV-3402, Latvia",
+		"Website": "http://karostascietums.lv",
+		"Description": "A former military prison, now a museum offering an insight into Soviet-era history."
+	},
+	{
+		"GpsLocation": "56.511189, 21.012566",
+		"Name": "Liepāja Beach",
+		"Address": "Liepāja, LV-3401, Latvia",
+		"Website": "https://www.liepaja.lv",
+		"Description": "A beautiful stretch of white sandy beach on the Baltic Sea coast."
+	},
+	{
+		"GpsLocation": "57.542492, 25.427747",
+		"Name": "Cēsis Castle",
+		"Address": "Pils laukums 9, Cēsis, LV-4101, Latvia",
+		"Website": "https://www.cesupils.lv",
+		"Description": "A well-preserved medieval castle in the heart of Cēsis, offering tours and cultural events."
+	},
+	{
+		"GpsLocation": "57.313071, 25.272476",
+		"Name": "Ērgļu Cliffs",
+		"Address": "Priekuļi Parish, Cēsu Municipality, Latvia",
+		"Website": "https://www.latvia.travel",
+		"Description": "Sandstone cliffs along the Gauja River, offering scenic views and hiking trails."
+	},
+	{
+		"GpsLocation": "56.639649, 25.244903",
+		"Name": "Daugavpils Fortress",
+		"Address": "Daugavpils, LV-5401, Latvia",
+		"Website": "https://www.daugavpils.lv",
+		"Description": "A 19th-century fortress that played a significant role in the region's military history."
+	},
+	{
+		"GpsLocation": "56.880696, 26.538793",
+		"Name": "Daugavpils Mark Rothko Art Centre",
+		"Address": "Mihaila iela 3, Daugavpils, LV-5401, Latvia",
+		"Website": "http://www.rothkocenter.com",
+		"Description": "An art center dedicated to the works of the world-famous painter Mark Rothko, who was born in Daugavpils."
+	},
+	{
+		"GpsLocation": "57.512518, 24.722122",
+		"Name": "Turaida Castle",
+		"Address": "Turaidas iela 10, Sigulda, LV-2150, Latvia",
+		"Website": "http://www.turaida-muzejs.lv",
+		"Description": "A red-brick medieval castle offering stunning views of the Gauja River Valley."
+	},
+	{
+		"GpsLocation": "57.152501, 24.837004",
+		"Name": "Gutman's Cave",
+		"Address": "Sigulda, LV-2150, Latvia",
+		"Website": "https://www.sigulda.lv",
+		"Description": "The largest cave in the Baltics, known for its inscriptions dating back centuries."
+	},
+	{
+		"GpsLocation": "57.242036, 22.590800",
+		"Name": "Kolka Cape",
+		"Address": "Kolka, Dundaga Parish, LV-3275, Latvia",
+		"Website": "https://www.latvia.travel",
+		"Description": "Where the Baltic Sea meets the Gulf of Riga, a popular spot for birdwatching and scenic views."
+	},
+	{
+		"GpsLocation": "56.844654, 24.354488",
+		"Name": "Jelgava Palace",
+		"Address": "Lielā iela 2, Jelgava, LV-3001, Latvia",
+		"Website": "https://www.jelgava.lv",
+		"Description": "The largest Baroque-style palace in the Baltics, now home to the Latvian University of Agriculture."
+	},
+	{
+		"GpsLocation": "56.844082, 24.355163",
+		"Name": "Holy Trinity Church Tower",
+		"Address": "Akadēmijas iela 1, Jelgava, LV-3001, Latvia",
+		"Website": "https://www.jelgavaspils.lv",
+		"Description": "A church tower offering panoramic views of Jelgava and its surroundings."
+	},
+	{
+		"GpsLocation": "57.034196, 25.926331",
+		"Name": "Rēzekne Hill of Crosses",
+		"Address": "Rēzekne, LV-4601, Latvia",
+		"Website": "https://www.rezekne.lv",
+		"Description": "A sacred site featuring hundreds of crosses placed by pilgrims."
+	},
+	{
+		"GpsLocation": "56.505566, 27.332120",
+		"Name": "Ludza Castle Ruins",
+		"Address": "Ludza, LV-5701, Latvia",
+		"Website": "https://www.latvia.travel",
+		"Description": "Ruins of a medieval castle overlooking Lake Ludza, offering scenic views and a glimpse into Latvia's history."
+	},
+	{
+		"GpsLocation": "56.723926, 24.199566",
+		"Name": "Bauska Castle",
+		"Address": "Bauska, LV-3901, Latvia",
+		"Website": "http://www.bauskaspils.lv",
+		"Description": "A Renaissance fortress located at the confluence of the Mūsa and Mēmele rivers."
+	},
+	{
+		"GpsLocation": "56.408794, 24.195643",
+		"Name": "Rundāle Palace",
+		"Address": "Rundāle, Pilsrundāle Parish, LV-3921, Latvia",
+		"Website": "http://rundale.net",
+		"Description": "A stunning Baroque palace often referred to as the 'Versailles of Latvia.'"
+	},
+	{
+		"GpsLocation": "57.547192, 22.962323",
+		"Name": "Ventspils Beach",
+		"Address": "Ventspils, LV-3601, Latvia",
+		"Website": "https://www.visitventspils.com",
+		"Description": "A Blue Flag beach known for its cleanliness, golden sands, and family-friendly facilities."
+	},
+	{
+		"GpsLocation": "57.397593, 21.564121",
+		"Name": "Ventspils Castle",
+		"Address": "Jāņa iela 17, Ventspils, LV-3601, Latvia",
+		"Website": "http://www.ventspilsmuzejs.lv",
+		"Description": "A medieval castle now serving as a museum showcasing the history of the region."
+	},
+	{
+		"GpsLocation": "56.966808, 24.159447",
+		"Name": "Jūrmala Beach",
+		"Address": "Jūrmala, LV-2010, Latvia",
+		"Website": "https://www.visitjurmala.lv",
+		"Description": "A popular beach destination known for its long stretch of white sand and wooden architecture."
+	},
+	{
+		"GpsLocation": "56.976202, 23.809431",
+		"Name": "Kemeri National Park",
+		"Address": "Jūrmala, LV-2012, Latvia",
+		"Website": "http://www.kemerunacionalaisparks.lv",
+		"Description": "A national park with unique wetlands, forests, and a famous wooden boardwalk."
+	},
+	{
+		"GpsLocation": "56.408409, 21.527136",
+		"Name": "Pape Nature Park",
+		"Address": "Pape, LV-3477, Latvia",
+		"Website": "https://www.daba.gov.lv",
+		"Description": "A nature park known for its wild horses, bison, and birdwatching opportunities."
+	},
+	{
+		"GpsLocation": "57.540072, 25.399633",
+		"Name": "Cēsis St. John's Church",
+		"Address": "Lielā Skolas iela 8, Cēsis, LV-4101, Latvia",
+		"Website": "https://www.latvia.travel",
+		"Description": "One of the oldest medieval churches in Latvia, located in the heart of Cēsis."
+	},
+	{
+		"GpsLocation": "57.327073, 26.244584",
+		"Name": "Alūksne Castle Ruins",
+		"Address": "Alūksne, LV-4301, Latvia",
+		"Website": "https://www.aluksne.lv",
+		"Description": "The ruins of a Livonian Order castle with scenic views of Lake Alūksne."
+	},
+	{
+		"GpsLocation": "57.425616, 24.828413",
+		"Name": "Krimulda Manor",
+		"Address": "Krimulda, LV-2150, Latvia",
+		"Website": "https://www.krimulda.lv",
+		"Description": "A historical manor house offering beautiful views over the Gauja Valley."
+	},
+	{
+		"GpsLocation": "57.010261, 24.458339",
+		"Name": "Rāmkalni",
+		"Address": "Inčukalns Parish, LV-2141, Latvia",
+		"Website": "https://www.ramkalni.lv",
+		"Description": "An outdoor recreation area offering activities like bobsledding and hiking."
+	},
+	{
+		"GpsLocation": "56.883492, 24.150067",
+		"Name": "Latvian Ethnographic Open-Air Museum",
+		"Address": "Brīvības gatve 440, Rīga, LV-1024, Latvia",
+		"Website": "http://www.brivdabasmuzejs.lv",
+		"Description": "An open-air museum showcasing traditional Latvian rural life with historic buildings and artifacts."
+	},
+	{
+		"GpsLocation": "57.183011, 24.833105",
+		"Name": "Ligatne Nature Trails",
+		"Address": "Līgatne, LV-4108, Latvia",
+		"Website": "https://www.daba.gov.lv",
+		"Description": "A series of trails showcasing the natural beauty of the Gauja National Park."
+	},
+	{
+		"GpsLocation": "56.639427, 25.257721",
+		"Name": "Aglona Basilica",
+		"Address": "Aglona, LV-5304, Latvia",
+		"Website": "http://www.aglonasbazilika.lv",
+		"Description": "A Roman Catholic basilica and the most important pilgrimage site in Latvia."
+	},
+	{
+		"GpsLocation": "57.389479, 22.574528",
+		"Name": "Slītere National Park",
+		"Address": "Kolkas pagasts, Dundagas novads, LV-3275, Latvia",
+		"Website": "https://www.daba.gov.lv",
+		"Description": "A national park known for its coastal landscapes and rich biodiversity."
+	},
+	{
+		"GpsLocation": "56.346225, 24.127145",
+		"Name": "Jēkabpils Old Town",
+		"Address": "Jēkabpils, LV-5201, Latvia",
+		"Website": "https://www.jekabpils.lv",
+		"Description": "A charming town with historic buildings and a rich cultural heritage."
+	},
+	{
+		"GpsLocation": "57.192509, 27.315588",
+		"Name": "Viļaka Castle Island",
+		"Address": "Viļaka, LV-4583, Latvia",
+		"Website": "https://www.latvia.travel",
+		"Description": "An island with the ruins of a medieval castle, surrounded by a picturesque lake."
+	},
+	{
+		"GpsLocation": "56.598973, 24.337067",
+		"Name": "Bauska Town Hall",
+		"Address": "Rātslaukums 1, Bauska, LV-3901, Latvia",
+		"Website": "https://www.tourism.bauska.lv",
+		"Description": "A Renaissance-style town hall in the center of Bauska, recently restored."
+	},
+	{
+		"GpsLocation": "56.883173, 24.297894",
+		"Name": "Mežotne Palace",
+		"Address": "Mežotnes pils, LV-3918, Latvia",
+		"Website": "http://www.mezotne.lv",
+		"Description": "A neoclassical palace surrounded by a beautiful English-style park."
+	},
+	{
+		"GpsLocation": "56.676197, 23.761950",
+		"Name": "Jelgava St. Simeon and St. Anna Orthodox Cathedral",
+		"Address": "Raiņa iela 5, Jelgava, LV-3001, Latvia",
+		"Website": "https://www.latvia.travel",
+		"Description": "An impressive Russian Orthodox cathedral in Jelgava, built in the 19th century."
+	},
+	{
+		"GpsLocation": "56.656208, 23.742126",
+		"Name": "Dobele Castle Ruins",
+		"Address": "Brīvības iela 2c, Dobele, LV-3701, Latvia",
+		"Website": "https://www.latvia.travel",
+		"Description": "The ruins of a 14th-century Livonian Order castle located in the heart of Dobele."
+	},
+	{
+		"GpsLocation": "57.372813, 25.279258",
+		"Name": "Drusti Windmill",
+		"Address": "Drusti Parish, Cēsu Municipality, LV-4132, Latvia",
+		"Website": "https://www.latvia.travel",
+		"Description": "A traditional Latvian windmill, restored and open to visitors."
+	},
+	{
+		"GpsLocation": "57.073336, 27.093370",
+		"Name": "Cesvaine Palace",
+		"Address": "Pils iela 1, Cesvaine, LV-4871, Latvia",
+		"Website": "https://www.latvia.travel",
+		"Description": "A neo-Renaissance style palace surrounded by a scenic park."
+	},
+	{
+		"GpsLocation": "56.538177, 27.720295",
+		"Name": "Latgale Craftsmen's Centre",
+		"Address": "Raiņa iela 18, Rēzekne, LV-4601, Latvia",
+		"Website": "http://www.latgalesamatnieki.lv",
+		"Description": "A center dedicated to preserving and promoting traditional Latgalian crafts."
+	},
+	{
+		"GpsLocation": "56.719610, 24.727781",
+		"Name": "Koknese Castle Ruins",
+		"Address": "Koknese, LV-5113, Latvia",
+		"Website": "http://www.koknese.lv",
+		"Description": "The ruins of a 13th-century castle overlooking the Daugava River."
+	},
+	{
+		"GpsLocation": "57.102456, 22.560176",
+		"Name": "Pāvilosta Seaside Park",
+		"Address": "Pāvilosta, LV-3466, Latvia",
+		"Website": "https://www.latvia.travel",
+		"Description": "A peaceful park along the Baltic Sea coast, perfect for a relaxing walk."
+	},
+	{
+		"GpsLocation": "57.248648, 23.905401",
+		"Name": "Talsi Hillfort",
+		"Address": "Talsi, LV-3201, Latvia",
+		"Website": "https://www.talsi.lv",
+		"Description": "An ancient hillfort site offering panoramic views of the surrounding countryside."
+	},
+	{
+		"GpsLocation": "57.533925, 25.426643",
+		"Name": "Cēsis New Castle",
+		"Address": "Pils laukums 9, Cēsis, LV-4101, Latvia",
+		"Website": "https://www.latvia.travel",
+		"Description": "A historic castle now housing the Cēsis History and Art Museum."
+	},
+	{
+		"GpsLocation": "56.305938, 27.181520",
+		"Name": "Ludza History Museum",
+		"Address": "Tālavijas iela 29, Ludza, LV-5701, Latvia",
+		"Website": "http://www.ludzasmuzejs.lv",
+		"Description": "A museum showcasing the history and culture of the Ludza region."
+	},
+	{
+		"GpsLocation": "56.503712, 25.927456",
+		"Name": "Rēzekne Green Synagogue",
+		"Address": "Krāslavas iela 5, Rēzekne, LV-4601, Latvia",
+		"Website": "https://www.latvia.travel",
+		"Description": "The oldest wooden synagogue in Latvia, now a cultural and historical center."
+	},
+	{
+		"GpsLocation": "56.619375, 23.282963",
+		"Name": "Dobele Lilac Garden",
+		"Address": "Dobele, LV-3701, Latvia",
+		"Website": "https://www.latvia.travel",
+		"Description": "A beautiful garden in Dobele featuring a variety of lilac species."
+	},
+	{
+		"GpsLocation": "57.041623, 25.253147",
+		"Name": "Cesvaine Watermill",
+		"Address": "Cesvaine, LV-4871, Latvia",
+		"Website": "https://www.latvia.travel",
+		"Description": "A historic watermill in Cesvaine, showcasing traditional milling techniques."
+	},
+	{
+		"GpsLocation": "57.024454, 24.286894",
+		"Name": "Amata River Trail",
+		"Address": "Amata Parish, LV-4101, Latvia",
+		"Website": "https://www.latvia.travel",
+		"Description": "A scenic hiking trail along the Amata River, known for its natural beauty and rapids."
+	},
+	{
+		"GpsLocation": "56.738781, 24.367422",
+		"Name": "Lielvārde Castle Ruins",
+		"Address": "Lielvārde, LV-5070, Latvia",
+		"Website": "https://www.lielvarde.lv",
+		"Description": "The ruins of a medieval castle on the banks of the Daugava River."
+	}
+]
