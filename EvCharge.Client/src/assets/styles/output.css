@@ -554,13 +554,180 @@ video {
   --tw-contain-style:  ;
 }
 
-.bg-black {
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.bg-beige-100 {
   --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+  background-color: rgb(250 249 247 / var(--tw-bg-opacity));
 }
 
-.text-white {
+.bg-beige-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(246 243 240 / var(--tw-bg-opacity));
+}
+
+.bg-beige-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(241 236 232 / var(--tw-bg-opacity));
+}
+
+.bg-beige-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(237 230 225 / var(--tw-bg-opacity));
+}
+
+.bg-beige-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(232 224 217 / var(--tw-bg-opacity));
+}
+
+.text-\[1\.125rem\] {
+  font-size: 1.125rem;
+}
+
+.text-\[1\.5rem\] {
+  font-size: 1.5rem;
+}
+
+.text-\[1\.75rem\] {
+  font-size: 1.75rem;
+}
+
+.text-\[1rem\] {
+  font-size: 1rem;
+}
+
+.text-\[2\.625rem\] {
+  font-size: 2.625rem;
+}
+
+.text-\[2rem\] {
+  font-size: 2rem;
+}
+
+.text-\[3\.25rem\] {
+  font-size: 3.25rem;
+}
+
+.leading-\[1\.625rem\] {
+  line-height: 1.625rem;
+}
+
+.leading-\[1\.75rem\] {
+  line-height: 1.75rem;
+}
+
+.leading-\[2\.25rem\] {
+  line-height: 2.25rem;
+}
+
+.leading-\[2\.5rem\] {
+  line-height: 2.5rem;
+}
+
+.leading-\[2rem\] {
+  line-height: 2rem;
+}
+
+.leading-\[3\.25rem\] {
+  line-height: 3.25rem;
+}
+
+.leading-\[4rem\] {
+  line-height: 4rem;
+}
+
+.text-brown-800 {
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+  color: rgb(51 30 17 / var(--tw-text-opacity));
 }
 
+.container {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+
+@font-face {
+  font-family: If Sans Thin;
+
+  src: url(../fonts/IfSans-Thin.ttf);
+
+  font-style: normal;
+}
+
+@font-face {
+  font-family: If Sans Light;
+
+  src: url(../fonts/IfSans-Light.ttf);
+
+  font-style: normal;
+}
+
+@font-face {
+  font-family: If Sans Normal;
+
+  src: url(../fonts/IfSans-Regular.ttf);
+
+  font-style: normal;
+}
+
+@font-face {
+  font-family: If Sans Medium;
+
+  src: url(../fonts/IfSans-Medium.ttf);
+
+  font-style: normal;
+}
+
+@font-face {
+  font-family: If Sans Bold;
+
+  src: url(../fonts/IfSans-Bold.ttf);
+
+  font-style: normal;
+}
+
+* {
+  font-family: If Sans;
+  font-weight: 400;
+}

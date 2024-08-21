@@ -2,3 +2,33 @@
 @tailwind utilities;
 @tailwind components;
 
+@font-face {
+    font-family: If Sans Thin;
+    src: url(../fonts/IfSans-Thin.ttf);
+    font-style: normal;
+}
+@font-face {
+    font-family: If Sans Light;
+    src: url(../fonts/IfSans-Light.ttf);
+    font-style: normal;
+}
+@font-face {
+    font-family: If Sans Normal;
+    src: url(../fonts/IfSans-Regular.ttf);
+    font-style: normal;
+}
+@font-face {
+    font-family: If Sans Medium;
+    src: url(../fonts/IfSans-Medium.ttf);
+    font-style: normal;
+}
+@font-face {
+    font-family: If Sans Bold;
+    src: url(../fonts/IfSans-Bold.ttf);
+    font-style: normal;
+}
+
+* {
+    font-family: If Sans;
+    font-weight: 400;
+}
