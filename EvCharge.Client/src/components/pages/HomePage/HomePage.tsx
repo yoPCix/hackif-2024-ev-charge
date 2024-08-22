@@ -22,6 +22,7 @@ import { Loader, LoaderSize, LoaderType } from "@ids/react-loader";
 const center: google.maps.LatLngLiteral = {
 	lat: 56.95148884465696,
 	lng: 24.11329878216981,
+
 };
 
 const HomePageConstants = {
@@ -70,8 +71,7 @@ export const HomePage: React.FC = () => {
 	const [map, setMap] = useState<google.maps.Map | null>(null);
 
 	const onLoad = useCallback((map: google.maps.Map) => {
-		const bounds = new google.maps.LatLngBounds(center);
-		map.fitBounds(bounds);
+		map.setCenter(center);
 
 		setMap(map);
 	}, []);
@@ -120,7 +120,7 @@ export const HomePage: React.FC = () => {
 						height: `calc(100% - ${HomePageConstants.BOTTOM_OFFSET}px)`,
 					}}
 					center={center}
-					zoom={14}
+					zoom={10}
 					onLoad={onLoad}
 					onUnmount={onUnmount}
 					mapTypeId={google.maps.MapTypeId.TERRAIN}
