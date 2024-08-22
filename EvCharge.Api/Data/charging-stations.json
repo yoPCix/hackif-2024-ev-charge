@@ -1,6 +1,8 @@
 [
 	{
-		"Name": "Sample-Name",
+		"Id": "1",
+		"Name": "Demo-Name1",
+		"Brand": "Supercharge",
 		"GpsLocation": "56.62244550769715, 21.827600015202638",
 		"Address": "Ugāle, Latvia",
 		"Stalls": 10,
@@ -8,7 +10,9 @@
 		"Power": "50kW"
 	},
 	{
-		"Name": "Sample-Name",
+		"Id": "2",
+		"Name": "Demo-Name1",
+		"Brand": "Supercharge",
 		"GpsLocation": "56.673408737617166, 22.0171141666006",
 		"Address": "Skrunda, Latvia",
 		"Stalls": 10,
@@ -16,7 +20,9 @@
 		"Power": "50kW"
 	},
 	{
-		"Name": "Sample-Name",
+		"Id": "3",
+		"Name": "Demo-Name1",
+		"Brand": "Supercharge",
 		"GpsLocation": "57.1707023634294, 22.65809774771518",
 		"Address": "Lībagi, Latvia",
 		"Stalls": 10,
@@ -24,7 +30,9 @@
 		"Power": "50kW"
 	},
 	{
-		"Name": "Sample-Name",
+		"Id": "4",
+		"Name": "Demo-Name1",
+		"Brand": "Supercharge",
 		"GpsLocation": "57.45364458568021, 22.88709401316268",
 		"Address": "Kaltene, Latvia",
 		"Stalls": 10,
@@ -32,7 +40,9 @@
 		"Power": "50kW"
 	},
 	{
-		"Name": "Sample-Name",
+		"Id": "5",
+		"Name": "Demo-Name1",
+		"Brand": "Supercharge",
 		"GpsLocation": "57.67351381612848, 22.319924808287364",
 		"Address": "Mazirbe, Latvia",
 		"Stalls": 10,
@@ -40,7 +50,9 @@
 		"Power": "50kW"
 	},
 	{
-		"Name": "Sample-Name",
+		"Id": "6",
+		"Name": "Demo-Name1",
+		"Brand": "Supercharge",
 		"GpsLocation": "57.811963265813, 24.345914538292618",
 		"Address": "Kuiviži, Latvia",
 		"Stalls": 10,
@@ -48,7 +60,9 @@
 		"Power": "50kW"
 	},
 	{
-		"Name": "Sample-Name",
+		"Id": "7",
+		"Name": "Demo-Name1",
+		"Brand": "Supercharge",
 		"GpsLocation": "57.262641177168106, 24.41526574708445",
 		"Address": "Saulkrasti, Latvia",
 		"Stalls": 10,
@@ -56,7 +70,9 @@
 		"Power": "50kW"
 	},
 	{
-		"Name": "Sample-Name",
+		"Id": "8",
+		"Name": "Demo-Name1",
+		"Brand": "Supercharge",
 		"GpsLocation": "57.51331339764295, 24.717561435571987",
 		"Address": "Limbaži, Latvia",
 		"Stalls": 10,
@@ -64,7 +80,9 @@
 		"Power": "50kW"
 	},
 	{
-		"Name": "Sample-Name",
+		"Id": "9",
+		"Name": "Demo-Name1",
+		"Brand": "Supercharge",
 		"GpsLocation": "57.62617552317352, 25.693971336194064",
 		"Address": "Strenči, Latvia",
 		"Stalls": 10,
@@ -72,11 +90,153 @@
 		"Power": "50kW"
 	},
 	{
-		"Name": "Sample-Name",
+		"Id": "10",
+		"Name": "Demo-Name1",
+		"Brand": "Supercharge",
 		"GpsLocation": "57.53958091838756, 26.694413797507583",
 		"Address": "Ape, Latvia",
 		"Stalls": 10,
 		"FreeStalls": 2,
+		"Power": "50kW"
+	},
+	{
+		"Id": "11",
+		"Name": "Demo-Name1",
+		"Brand": "Supercharge",
+		"GpsLocation": "",
+		"Address": ", Latvia",
+		"Stalls": 10,
+		"FreeStalls": 5,
+		"Power": "50kW"
+	},
+	{
+		"Id": "12",
+		"Name": "Demo-Name1",
+		"Brand": "Supercharge",
+		"GpsLocation": "",
+		"Address": ", Latvia",
+		"Stalls": 10,
+		"FreeStalls": 8,
+		"Power": "50kW"
+	},
+	{
+		"Id": "13",
+		"Name": "Demo-Name1",
+		"Brand": "Supercharge",
+		"GpsLocation": "",
+		"Address": ", Latvia",
+		"Stalls": 10,
+		"FreeStalls": 4,
+		"Power": "50kW"
+	},
+	{
+		"Id": "14",
+		"Name": "Demo-Name1",
+		"Brand": "Supercharge",
+		"GpsLocation": "",
+		"Address": ", Latvia",
+		"Stalls": 10,
+		"FreeStalls": 7,
+		"Power": "50kW"
+	},
+	{
+		"Id": "15",
+		"Name": "Demo-Name1",
+		"Brand": "Supercharge",
+		"GpsLocation": "",
+		"Address": ", Latvia",
+		"Stalls": 10,
+		"FreeStalls": 0,
+		"Power": "50kW"
+	},
+	{
+		"Id": "16",
+		"Name": "Demo-Name1",
+		"Brand": "Supercharge",
+		"GpsLocation": "",
+		"Address": ", Latvia",
+		"Stalls": 10,
+		"FreeStalls": 3,
+		"Power": "50kW"
+	},
+	{
+		"Id": "17",
+		"Name": "Demo-Name1",
+		"Brand": "Supercharge",
+		"GpsLocation": "",
+		"Address": ", Latvia",
+		"Stalls": 10,
+		"FreeStalls": 9,
+		"Power": "50kW"
+	},
+	{
+		"Id": "18",
+		"Name": "Demo-Name1",
+		"Brand": "Supercharge",
+		"GpsLocation": "",
+		"Address": ", Latvia",
+		"Stalls": 10,
+		"FreeStalls": 6,
+		"Power": "50kW"
+	},
+	{
+		"Id": "19",
+		"Name": "Demo-Name1",
+		"Brand": "Supercharge",
+		"GpsLocation": "",
+		"Address": ", Latvia",
+		"Stalls": 10,
+		"FreeStalls": 2,
+		"Power": "50kW"
+	},
+	{
+		"Id": "20",
+		"Name": "Demo-Name1",
+		"Brand": "Supercharge",
+		"GpsLocation": "",
+		"Address": ", Latvia",
+		"Stalls": 10,
+		"FreeStalls": 4,
+		"Power": "50kW"
+	},
+	{
+		"Id": "21",
+		"Name": "Demo-Name1",
+		"Brand": "Supercharge",
+		"GpsLocation": "",
+		"Address": ", Latvia",
+		"Stalls": 10,
+		"FreeStalls": 5,
+		"Power": "50kW"
+	},
+	{
+		"Id": "22",
+		"Name": "Demo-Name1",
+		"Brand": "Supercharge",
+		"GpsLocation": "",
+		"Address": ", Latvia",
+		"Stalls": 10,
+		"FreeStalls": 1,
+		"Power": "50kW"
+	},
+	{
+		"Id": "23",
+		"Name": "Demo-Name1",
+		"Brand": "Supercharge",
+		"GpsLocation": "",
+		"Address": ", Latvia",
+		"Stalls": 10,
+		"FreeStalls": 3,
+		"Power": "50kW"
+	},
+	{
+		"Id": "24",
+		"Name": "Demo-Name1",
+		"Brand": "Supercharge",
+		"GpsLocation": "",
+		"Address": ", Latvia",
+		"Stalls": 10,
+		"FreeStalls": 7,
 		"Power": "50kW"
 	}
 ]

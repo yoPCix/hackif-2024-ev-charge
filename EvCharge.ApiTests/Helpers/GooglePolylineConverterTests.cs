@@ -1,7 +1,9 @@
-﻿using FluentAssertions;
+﻿using EvCharge.Api.Controllers;
+using EvCharge.Api.Helpers;
+using FluentAssertions;
 using GMap.NET;
 
-namespace EvCharge.Api.Controllers.Tests
+namespace EvCharge.ApiTests.Helpers
 {
     [TestClass]
     public class GooglePolylineConverterTests
@@ -10,11 +12,11 @@ namespace EvCharge.Api.Controllers.Tests
         public void DecodeTest()
         {
             var polyline = "q~l~Hxmf_O";
-            var decoded = GooglePolylineConverter.Decode(polyline); 
+            var decoded = GooglePolylineConverter.Decode(polyline);
             decoded.Should().BeEquivalentTo(new List<PointLatLng>
             {
                 new PointLatLng ( 52.33657, -83.92429 ),
-                
+
             });
         }
 
