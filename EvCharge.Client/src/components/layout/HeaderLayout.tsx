@@ -10,6 +10,7 @@ import {
 	TypographyUIWeight,
 } from "@ids/react-typography";
 import { Ui16Cross, Ui16Menu, Ui24Cross } from "@ids/react-icons";
+import { env } from "@/utils/env";
 
 const HeaderConstants = {
 	HEIGHT: 60,
