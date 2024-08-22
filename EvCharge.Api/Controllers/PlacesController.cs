@@ -1,10 +1,9 @@
 using EV.Charge.Models;
+using EvCharge.Api.Data;
 using EvCharge.Api.Helpers;
 using EvCharge.Api.Models;
 using GMap.NET;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using IOFile = System.IO.File;
 
 namespace EvCharge.Api.Controllers;
 
@@ -12,14 +11,13 @@ namespace EvCharge.Api.Controllers;
 [Route("api/[controller]")]
 public class PlacesController : ControllerBase
 {
-    private const string RawPlacesPath = "Data/sightseeing.json";
-    private const string SavedPlaces = "saved-places.json";
     private readonly ILogger<PlacesController> _logger;
+    private readonly PlacesRepository _placesRepository;
 
-    public PlacesController(ILogger<PlacesController> logger)
+    public PlacesController(ILogger<PlacesController> logger, PlacesRepository placesRepository)
     {
         _logger = logger;
-        IOFile.Delete(SavedPlaces);
+        _placesRepository = placesRepository;
     }
 
     [HttpGet]
@@ -27,7 +25,7 @@ public class PlacesController : ControllerBase
     public async Task<IActionResult> Get()
     {
         // read data from sightseeing.json
-        var places = await GetAllPlacesAsync();
+        var places = await _placesRepository.GetAllPlacesAsync();
         return Ok(places);
     }
 
@@ -35,8 +33,8 @@ public class PlacesController : ControllerBase
     [ProducesResponseType(typeof(SightseeingPlace[]), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetClosePlaces([FromBody] GpsPath path, [FromRoute] int distanceMeters)
     {
-        var allPlaces = await GetAllPlacesAsync();
-        var monuments = allPlaces?.Where(place => place.Name.Contains("Freedom Monument")).ToList();
+        var allPlaces = await _placesRepository.GetAllPlacesAsync();
+        var monuments = allPlaces.Where(place => place.Name.Contains("Freedom Monument")).ToList();
         // find all places that are within distanceMeters from the route
         var mapRoute = new MapRoute(GooglePolylineConverter.Decode(path.Polyline), "test");
         var closePlaces = monuments.Where(place => IsCloseToRoute(mapRoute, place, distanceMeters)).ToList();
@@ -66,38 +64,4 @@ public class PlacesController : ControllerBase
     }
 
 
-
-    private async Task<IList<SightseeingPlace>> GetAllPlacesAsync()
-    {
-        if (await Task.Run(() => IOFile.Exists(SavedPlaces)))
-        {
-            return JsonConvert.DeserializeObject<List<SightseeingPlace>>(
-                await System.IO.File.ReadAllTextAsync(SavedPlaces));
-        }
-
-        var rawPlaces =
-            JsonConvert.DeserializeObject<List<SightseeingPlaceRaw>>(
-                await System.IO.File.ReadAllTextAsync(RawPlacesPath));
-
-        var places = rawPlaces.Where(rawPlace => !string.IsNullOrEmpty(rawPlace.GpsLocation)).Select(rawPlace =>
-            new SightseeingPlace
-            {
-                Id = rawPlace.Id,
-                Address = rawPlace.Address,
-                Name = rawPlace.Name,
-                Latitude = double.Parse(rawPlace.GpsLocation.Split(',')[0]),
-                Longitude = double.Parse(rawPlace.GpsLocation.Split(',')[1]),
-                Website = rawPlace.Website,
-                Description = rawPlace.Description
-            }).ToList();
-
-        await IOFile.WriteAllTextAsync(SavedPlaces, JsonConvert.SerializeObject(places));
-
-        return places;
-    }
-
-    private async Task SaveAllPlacesAsync(IEnumerable<SightseeingPlace> places)
-    {
-        await IOFile.WriteAllTextAsync(SavedPlaces, JsonConvert.SerializeObject(places));
-    }
 }
