@@ -2,11 +2,18 @@ import { cn } from "@/utils/cn";
 import { env } from "@/utils/env";
 import { Loader, LoaderType, LoaderSize } from "@ids/react-loader";
 import { TypographyHeading } from "@ids/react-typography";
-import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
+import {
+	GoogleMap,
+	useJsApiLoader,
+	Marker,
+	MarkerProps,
+} from "@react-google-maps/api";
 import React, {
 	createContext,
+	Dispatch,
 	PropsWithChildren,
 	ReactNode,
+	SetStateAction,
 	useCallback,
 	useContext,
 	useState,
@@ -16,6 +23,8 @@ import { useGeolocated } from "react-geolocated";
 export type GoogleMapContext = {
 	MapView: ReactNode;
 	map?: google.maps.Map;
+	isLoaded: boolean;
+	setMarkers: Dispatch<SetStateAction<MarkerProps[]>>;
 };
 
 const center: google.maps.LatLngLiteral = {
@@ -33,6 +42,8 @@ export const GoogleMapContext = createContext({} as GoogleMapContext);
 export const GoogleMapProvider: React.FC<PropsWithChildren> = ({
 	children,
 }) => {
+	const [markers, setMarkers] = useState<MarkerProps[]>([]);
+
 	const { coords, isGeolocationAvailable, isGeolocationEnabled } =
 		useGeolocated({
 			positionOptions: { enableHighAccuracy: true },
@@ -46,14 +57,14 @@ export const GoogleMapProvider: React.FC<PropsWithChildren> = ({
 	const [map, setMap] = useState<google.maps.Map>();
 
 	const onLoad = useCallback((map: google.maps.Map) => {
-		const bounds = new google.maps.LatLngBounds(center);
-		map.fitBounds(bounds);
+		map.setCenter(center);
 
 		setMap(map);
 	}, []);
 
 	const onUnmount = useCallback(() => {
-		setMap(undefined);
+		console.log("unmounting");
+		// setMap(undefined);
 	}, []);
 
 	const MapView = isLoaded ? (
@@ -64,7 +75,7 @@ export const GoogleMapProvider: React.FC<PropsWithChildren> = ({
 				height: "100%",
 			}}
 			center={center}
-			zoom={10}
+			zoom={12}
 			onLoad={onLoad}
 			onUnmount={onUnmount}
 			mapTypeId={google.maps.MapTypeId.TERRAIN}
@@ -76,7 +87,15 @@ export const GoogleMapProvider: React.FC<PropsWithChildren> = ({
 				mapTypeControl: false,
 				mapTypeId: google.maps.MapTypeId.TERRAIN,
 			}}
-		/>
+		>
+			{markers.map(({ position, ...marker }) => (
+				<Marker
+					key={`${position.lat}|${position.lng}`}
+					position={position}
+					{...marker}
+				/>
+			))}
+		</GoogleMap>
 	) : (
 		<div
 			className={cn(
@@ -97,7 +116,7 @@ export const GoogleMapProvider: React.FC<PropsWithChildren> = ({
 		</div>
 	);
 
-	const context: GoogleMapContext = { map, MapView };
+	const context: GoogleMapContext = { map, MapView, isLoaded, setMarkers };
 
 	return (
 		<GoogleMapContext.Provider value={context}>

@@ -11,6 +11,7 @@ import {
 	TypographyUISize,
 	TypographyUIWeight,
 } from "@ids/react-typography";
+import { useGoogleMaps } from "../context/GoogleMapProvider";
 
 export type WaypointListProps = {
 	items: WaypointListItem[];
@@ -41,6 +42,7 @@ export const WaypointList: React.FC<WaypointListProps> = ({
 			setCheckedWaypoints([...checkedWaypoints, id]);
 		}
 	};
+	const { map } = useGoogleMaps();
 
 	return (
 		<div className={cn("relative h-[350px]")}>
@@ -60,6 +62,7 @@ export const WaypointList: React.FC<WaypointListProps> = ({
 						handleClick={() => {
 							setShowSelectedWaypoint(true);
 							setSelectedWaypoint(item);
+							map?.setCenter({ lat: item.latitude, lng: item.longitude });
 						}}
 						{...item}
 					/>

@@ -16,33 +16,20 @@ import {
 } from "@/components/context/GoogleMapProvider";
 
 export const HomePage: React.FC = () => {
-	const { map, MapView } = useGoogleMaps();
+	const { map, MapView, isLoaded, setMarkers } = useGoogleMaps();
 
 	const { data: stations } = useQuery({
 		queryKey: ["stations", "list"],
 		queryFn: async () => await StationsApiClient.getStations(),
+		enabled: isLoaded,
 		onSuccess: async (stations) => {
-			const MarkerLibrary = (await google.maps.importLibrary(
-				"marker"
-			)) as google.maps.MarkerLibrary;
-
-			stations.forEach((station) => {
-				const pin = new MarkerLibrary.PinElement({
-					background: "#2196F3",
-					borderColor: "#1E88E5",
-					glyphColor: "#1E88E5",
-					// glyph: "",
-				});
-				console.log(pin.element);
-				const marker = new MarkerLibrary.AdvancedMarkerElement({
-					map,
-					position: {
-						lat: station.latitude,
-						lng: station.longitude,
-					},
-					content: pin.element,
-				});
-			});
+			setMarkers(
+				stations.map(({ latitude, longitude }) => ({
+					position: { lat: latitude, lng: longitude },
+					clickable: true,
+					options: {},
+				}))
+			);
 		},
 	});
 
@@ -57,7 +44,7 @@ export const HomePage: React.FC = () => {
 		{
 			Logo: Product24TimeShareAbroad,
 			label: "Places to visit",
-			onClick: () => {},
+			onClick: () => navigate("/waypoints"),
 		},
 		{
 			Logo: Ui24User,

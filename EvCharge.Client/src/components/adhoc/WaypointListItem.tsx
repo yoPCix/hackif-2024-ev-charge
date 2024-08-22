@@ -13,7 +13,9 @@ import React, { useState } from "react";
 export type WaypointListItem = {
 	title: string;
 	subtitle: string;
-	power: number;
+	power?: number;
+	latitude: number;
+	longitude: number;
 };
 
 export type WaypointListItemProps = WaypointListItem & {
@@ -52,13 +54,15 @@ export const WaypointListItem: React.FC<WaypointListItemProps> = ({
 					>
 						{title}
 					</TypographyHeading>
-					<TypographyUI
-						className={cn("flex items-center gap-0.5")}
-						size={TypographyUISize.SMALL}
-					>
-						<Product24CameraFlash />
-						{power}kW
-					</TypographyUI>
+					{power && (
+						<TypographyUI
+							className={cn("flex items-center gap-0.5")}
+							size={TypographyUISize.SMALL}
+						>
+							<Product24CameraFlash />
+							{power}kW
+						</TypographyUI>
+					)}
 				</div>
 				<TypographyUI size={TypographyUISize.SMALL} isQuiet>
 					{subtitle}
