@@ -17,10 +17,11 @@ var app = builder.Build();
 
 app.UseCors(policy =>
 {
-    if (app.Environment.IsDevelopment())
-    {
+    //if (app.Environment.IsDevelopment())
+    //{
+    policy.AllowAnyHeader();
         policy.WithOrigins("http://localhost:5173");
-    }
+    //}
 });
 
 // Configure the HTTP request pipeline.

@@ -11,10 +11,9 @@ export class DescriptionApiClient {
 		baseURL: `${this._serverHost}${this._descriptionPath}`,
 	});
 
-	static getTravelDescription = async (): Promise<string> => {
+	static getTravelDescription = async (selectedPlaces: string[]): Promise<string> => {
 		try {
-			const placeIds = ["1", "2"];
-			const response = await this._httpClient.post("/", placeIds);
+			const response = await this._httpClient.post("/", selectedPlaces);
 
 			return response.data
 			
