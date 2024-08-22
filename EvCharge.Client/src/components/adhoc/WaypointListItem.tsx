@@ -21,6 +21,7 @@ export type WaypointListItem = {
 
 export type WaypointListItemProps = WaypointListItem & {
 	isWaypoint?: boolean;
+	isLoading?: boolean;
 	handleCheck: () => void;
 	handleClick: () => void;
 };
@@ -29,6 +30,7 @@ export const WaypointListItem: React.FC<WaypointListItemProps> = ({
 	title,
 	subtitle,
 	isWaypoint,
+	isLoading,
 	power,
 	handleCheck,
 	handleClick,
@@ -71,6 +73,7 @@ export const WaypointListItem: React.FC<WaypointListItemProps> = ({
 			</div>
 			<div className={cn("flex items-center")}>
 				<Button
+					disabled={isLoading}
 					type={ButtonType.TONAL}
 					size={ButtonSize.X_SMALL}
 					onClick={handleClick}

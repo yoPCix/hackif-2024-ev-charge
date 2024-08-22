@@ -7,6 +7,8 @@ import { Product24CameraFlash, Ui24ArrowLeft } from "@ids/react-icons";
 import {
 	TypographyHeading,
 	TypographyHeadingSize,
+	TypographyParagraph,
+	TypographyParagraphSize,
 	TypographyUI,
 	TypographyUISize,
 	TypographyUIWeight,
@@ -46,7 +48,11 @@ export const WaypointList: React.FC<WaypointListProps> = ({
 	};
 	const { map } = useGoogleMaps();
 
-	const { mutateAsync: getDescription } = useMutation({
+	const {
+		data: description,
+		mutateAsync: getDescription,
+		isLoading: isLoadingDescription,
+	} = useMutation({
 		mutationKey: ["description", "get"],
 		mutationFn: DescriptionApiClient.getTravelDescription,
 	});
@@ -65,6 +71,7 @@ export const WaypointList: React.FC<WaypointListProps> = ({
 					<WaypointListItem
 						key={getWaypointKey(item)}
 						isWaypoint={isWaypoint}
+						isLoading={isLoadingDescription}
 						handleCheck={() => toggleWaypoint(getWaypointKey(item))}
 						handleClick={async () => {
 							const description = await getDescription([item.id]);
@@ -170,7 +177,10 @@ export const WaypointList: React.FC<WaypointListProps> = ({
 							<Button>Start charging</Button>
 						</React.Fragment>
 					) : (
-						<div>test</div>
+						<div className={cn("flex flex-col gap-2")}>
+							<TypographyHeading>{selectedWaypoint?.title}</TypographyHeading>
+							<p className={cn("text-sm italic")}>{description}</p>
+						</div>
 					)}
 				</div>
 			</Box>

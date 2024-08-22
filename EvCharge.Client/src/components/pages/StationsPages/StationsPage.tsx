@@ -1,4 +1,4 @@
-import { PlacesApiClient } from "@/api/PlacesApiClient";
+import { StationsApiClient } from "@/api/StationsApiClient";
 import { WaypointList } from "@/components/adhoc/WaypointList";
 import { useGoogleMaps } from "@/components/context/GoogleMapProvider";
 import { cn } from "@/utils/cn";
@@ -7,14 +7,14 @@ import { useQuery } from "react-query";
 
 export const StationsPage: React.FC = () => {
 	const { MapView, setMarkers } = useGoogleMaps();
-	const { data: places } = useQuery({
-		queryKey: ["places", "list"],
-		queryFn: PlacesApiClient.getPlaces,
-		onSuccess: (places) => {
+	const { data: stations } = useQuery({
+		queryKey: ["stations", "list"],
+		queryFn: StationsApiClient.getStations,
+		onSuccess: (stations) => {
 			setMarkers(
-				places.map((place) => ({
-					id: place.id,
-					position: { lat: place.latitude, lng: place.longitude },
+				stations.map((station) => ({
+					id: station.id,
+					position: { lat: station.latitude, lng: station.longitude },
 				}))
 			);
 		},
@@ -26,7 +26,7 @@ export const StationsPage: React.FC = () => {
 			<WaypointList
 				isWaypoint={false}
 				items={
-					places?.map(({ name, address, ...item }) => ({
+					stations?.map(({ name, address, ...item }) => ({
 						title: name,
 						subtitle: address,
 						power: "10kW",
