@@ -34,10 +34,9 @@ public class PlacesController : ControllerBase
     public async Task<IActionResult> GetClosePlaces([FromBody] GpsPath path, [FromRoute] int distanceMeters)
     {
         var allPlaces = await _placesRepository.GetAllPlacesAsync();
-        var monuments = allPlaces.Where(place => place.Name.Contains("Freedom Monument")).ToList();
         // find all places that are within distanceMeters from the route
         var mapRoute = new MapRoute(GooglePolylineConverter.Decode(path.Polyline), "test");
-        var closePlaces = monuments.Where(place => IsCloseToRoute(mapRoute, place, distanceMeters)).ToList();
+        var closePlaces = allPlaces.Where(place => IsCloseToRoute(mapRoute, place, distanceMeters)).ToList();
         return Ok(closePlaces);
     }
 
@@ -45,7 +44,7 @@ public class PlacesController : ControllerBase
     {
         var dist = DistanceTo(route.Points, new PointLatLng(place.Latitude, place.Longitude));
         // check if the place is within distanceMeters from the route
-        return dist <= distanceMeters;
+        return dist <= ((double)distanceMeters / 1000);
     }
 
     public static double? DistanceTo(List<PointLatLng> points, PointLatLng point)
