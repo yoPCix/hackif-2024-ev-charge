@@ -1,0 +1,53 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start API",
+      "command": "dotnet",
+      "type": "shell",
+      "args": [
+        "run",
+        "--launch-profile=https"
+      ],
+      "icon": {
+        "id": "debug",
+        "color": "terminal.ansiGreen"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}/EvCharge.Api"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "Start Client",
+      "command": "npm",
+      "type": "shell",
+      "args": [
+        "run",
+        "dev"
+      ],
+      "icon": {
+        "id": "debug",
+        "color": "terminal.ansiGreen"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}/EvCharge.Client"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "Start Development",
+      "icon": {
+        "id": "debug-all",
+        "color": "terminal.ansiGreen"
+      },
+      "dependsOn": [
+        "Start API",
+        "Start Client"
+      ],
+      "problemMatcher": []
+    }
+  ]
+}

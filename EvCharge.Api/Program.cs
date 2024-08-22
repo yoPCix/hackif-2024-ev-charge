@@ -13,6 +13,14 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+app.UseCors(policy =>
+{
+    if (app.Environment.IsDevelopment())
+    {
+        policy.WithOrigins("http://localhost:5173");
+    }
+});
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

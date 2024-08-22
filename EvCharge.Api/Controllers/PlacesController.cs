@@ -33,7 +33,7 @@ public class PlacesController : ControllerBase
         var rawPlaces = JsonConvert.DeserializeObject<List<SightseeingPlaceRaw>>(
             await System.IO.File.ReadAllTextAsync("Data/sightseeing.json"));
 
-        return rawPlaces.Select(rawPlace => new SightseeingPlace
+        return rawPlaces?.Select(rawPlace => new SightseeingPlace
         {
             Address = rawPlace.Address,
             Name = rawPlace.Name,
@@ -47,7 +47,7 @@ public class PlacesController : ControllerBase
     public async Task<IActionResult> GetClosePlaces([FromBody] GpsPath path, [FromRoute] int distanceMeters)
     {
         var allPlaces = await GetAllPlacesAsync();
-        var monuments = allPlaces.Where(place => place.Name.Contains("Freedom Monument")).ToList();
+        var monuments = allPlaces?.Where(place => place.Name.Contains("Freedom Monument")).ToList();
         // find all places that are within distanceMeters from the route
         var mapRoute = new MapRoute(GooglePolylineConverter.Decode(path.Polyline), "test");
         var closePlaces = monuments.Where(place => IsCloseToRoute(mapRoute, place, distanceMeters)).ToList();

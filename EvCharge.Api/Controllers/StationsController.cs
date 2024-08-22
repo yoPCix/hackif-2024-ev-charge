@@ -1,7 +1,6 @@
 using EV.Charge.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace EvCharge.Api.Controllers
 {
@@ -21,8 +20,9 @@ namespace EvCharge.Api.Controllers
         public async Task<IActionResult> Get()
         {
             // read data from charging-stations.json
-            var stationsRaw = JsonConvert.DeserializeObject < List < ChargingStationRaw >> (await System.IO.File.ReadAllTextAsync("Data/charging-stations.json"));
-            var stations = stationsRaw.Select(rawStation => new ChargingStation
+            var stationsRaw = JsonConvert.DeserializeObject<List<ChargingStationRaw>>(await System.IO.File.ReadAllTextAsync("Data/charging-stations.json"));
+
+            var stations = stationsRaw?.Select(rawStation => new ChargingStation
             {
                 Address = rawStation.Address,
                 Name = rawStation.Name,
@@ -31,6 +31,7 @@ namespace EvCharge.Api.Controllers
                 ChargingSlotCount = rawStation.Stalls,
                 Status = rawStation.FreeStalls > 0 ? "Available" : "Occupied"
             }).ToList();
+
             return Ok(stations);
         }
     }

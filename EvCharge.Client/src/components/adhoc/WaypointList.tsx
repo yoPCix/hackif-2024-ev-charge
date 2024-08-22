@@ -1,8 +1,8 @@
-import React, { ComponentProps, useState } from "react";
-import { WaypointListItem, WaypointListItemProps } from "./WaypointListItem";
+import React, { useState } from "react";
+import { WaypointListItem } from "./WaypointListItem";
 import { cn } from "@/utils/cn";
 import { Box } from "@/components/ui/Box";
-import { Button, ButtonSize, ButtonType } from "@ids/react-button";
+import { Button, ButtonType } from "@ids/react-button";
 import { Product24CameraFlash, Ui24ArrowLeft } from "@ids/react-icons";
 import {
 	TypographyHeading,
@@ -45,10 +45,7 @@ export const WaypointList: React.FC<WaypointListProps> = ({
 	return (
 		<div className={cn("relative h-[350px]")}>
 			<ul
-				className={cn(
-					"flex flex-col h-full overflow-y-scroll"
-					// showSelectedWaypoint ? "overflow-y-hidden" : "overflow-y-scroll"
-				)}
+				className={cn("flex flex-col h-full overflow-y-scroll")}
 				style={{
 					paddingBottom: isWaypoint
 						? WaypointListConstants.NEXT_HEIGHT
@@ -59,7 +56,7 @@ export const WaypointList: React.FC<WaypointListProps> = ({
 					<WaypointListItem
 						key={getWaypointKey(item)}
 						isWaypoint={isWaypoint}
-						handleCheck={(checked) => toggleWaypoint(getWaypointKey(item))}
+						handleCheck={() => toggleWaypoint(getWaypointKey(item))}
 						handleClick={() => {
 							setShowSelectedWaypoint(true);
 							setSelectedWaypoint(item);
@@ -95,8 +92,6 @@ export const WaypointList: React.FC<WaypointListProps> = ({
 					"flex flex-col gap-3 w-full bottom-10",
 					"transition-all",
 					showSelectedWaypoint ? "left-0" : "left-[100%]"
-					// "translate-x-[90%]"
-					// showSelectedWaypoint ? "translate-x-[100%]" : "translate-x-0"
 				)}
 				style={{
 					height: `calc(350px-${WaypointListConstants.NEXT_HEIGHT}px)`,

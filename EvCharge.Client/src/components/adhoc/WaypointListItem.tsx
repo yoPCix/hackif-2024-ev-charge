@@ -18,7 +18,7 @@ export type WaypointListItem = {
 
 export type WaypointListItemProps = WaypointListItem & {
 	isWaypoint?: boolean;
-	handleCheck: (isChecked: boolean) => void;
+	handleCheck: () => void;
 	handleClick: () => void;
 };
 
@@ -36,16 +36,16 @@ export const WaypointListItem: React.FC<WaypointListItemProps> = ({
 		<li className={cn("flex border-b-2 border-b-beige-600 px-4 py-3 gap-3")}>
 			<div className={cn("flex flex-col gap-2 flex-grow")}>
 				<div className={cn("flex items-center gap-2")}>
-					<CheckboxInput
-						id={title}
-						checked={isChecked}
-						onChange={() => {
-							setIsChecked((_isChecked) => {
-								handleCheck(_isChecked);
-								return !_isChecked;
-							});
-						}}
-					/>
+					{isWaypoint && (
+						<CheckboxInput
+							id={title}
+							checked={isChecked}
+							onChange={() => {
+								handleCheck();
+								setIsChecked(!isChecked);
+							}}
+						/>
+					)}
 					<TypographyHeading
 						size={TypographyHeadingSize.XX_SMALL}
 						className={cn("flex-grow")}

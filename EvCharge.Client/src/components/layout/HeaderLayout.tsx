@@ -9,8 +9,7 @@ import {
 	TypographyUISize,
 	TypographyUIWeight,
 } from "@ids/react-typography";
-import { Ui16Cross, Ui16Menu, Ui24Cross } from "@ids/react-icons";
-import { env } from "@/utils/env";
+import { Ui16Cross, Ui16Menu } from "@ids/react-icons";
 
 const HeaderConstants = {
 	HEIGHT: 60,
@@ -65,7 +64,7 @@ export const HeaderLayout: React.FC = () => {
 			<div
 				className={cn(
 					"fixed left-0 right-0 bottom-0 z-30",
-					"bg-beige-200 border-t border-t-beige-500 transition-all origin-top duration-300 ease-in-out",
+					"bg-beige-200 transition-all origin-top duration-300 ease-in-out",
 					"flex flex-col p-4 gap-4",
 					isMenuExpanded ? "scale-y-100" : "scale-y-0 pointer-events-none"
 				)}

@@ -25,6 +25,7 @@ export class PlacesApiClient {
 
 			return parseResult.data;
 		} catch (err) {
+			console.log(err)
 			return [];
 		}
 	};
