@@ -655,6 +655,10 @@ video {
   width: 100%;
 }
 
+.max-w-\[90\%\] {
+  max-width: 90%;
+}
+
 .flex-grow {
   flex-grow: 1;
 }
@@ -869,6 +873,11 @@ video {
 .py-3 {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
+}
+
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
 }
 
 .text-center {

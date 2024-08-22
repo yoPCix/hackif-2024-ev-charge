@@ -16,8 +16,7 @@ export class StationsApiClient {
 		try {
 			const response = await this._httpClient.get("/");
 			const parseResult = await stationsSchema.safeParseAsync(response.data);
-			console.log(response.data)
-			console.log(parseResult)
+
 			if (!parseResult.success) {
 				return [];
 			}
