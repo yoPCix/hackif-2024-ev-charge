@@ -26,7 +26,7 @@ const center: google.maps.LatLngLiteral = {
 
 const HomePageConstants = {
 	BOTTOM_OFFSET: 50,
-	MAP_ID: crypto.randomUUID(),
+	MAP_ID: "127d18f654676a3b",
 };
 
 export const HomePage: React.FC = () => {
@@ -42,6 +42,29 @@ export const HomePage: React.FC = () => {
 	const { data: stations } = useQuery({
 		queryKey: ["stations", "list"],
 		queryFn: async () => await StationsApiClient.getStations(),
+		onSuccess: async (stations) => {
+			const MarkerLibrary = (await google.maps.importLibrary(
+				"marker"
+			)) as google.maps.MarkerLibrary;
+
+			stations.forEach((station) => {
+				const pin = new MarkerLibrary.PinElement({
+					background: "#2196F3",
+					borderColor: "#1E88E5",
+					glyphColor: "#1E88E5",
+					// glyph: "",
+				});
+
+				const marker = new MarkerLibrary.AdvancedMarkerElement({
+					map,
+					position: {
+						lat: station.latitude,
+						lng: station.longitude,
+					},
+					content: pin.element,
+				});
+			});
+		},
 	});
 
 	const [map, setMap] = useState<google.maps.Map | null>(null);
@@ -82,18 +105,7 @@ export const HomePage: React.FC = () => {
 			return;
 		}
 
-		const run = async () => {
-			// const { AdvancedMarkerElement } = (await google.maps.importLibrary(
-			// 	"marker"
-			// )) as google.maps.MarkerLibrary;
-			// const marker = new AdvancedMarkerElement({
-			// 	map,
-			// 	position: {
-			// 		lat: 56.95148884465696,
-			// 		lng: 24.11329878216981,
-			// 	},
-			// });
-		};
+		const run = async () => {};
 
 		run();
 	}, [map]);
@@ -102,17 +114,18 @@ export const HomePage: React.FC = () => {
 		<div className={cn("flex flex-col items-stretch h-full")}>
 			{isLoaded ? (
 				<GoogleMap
-					id={google.maps.Map.DEMO_MAP_ID}
+					id={HomePageConstants.MAP_ID}
 					mapContainerStyle={{
 						width: "100%",
 						height: `calc(100% - ${HomePageConstants.BOTTOM_OFFSET}px)`,
 					}}
 					center={center}
-					zoom={15}
+					zoom={14}
 					onLoad={onLoad}
 					onUnmount={onUnmount}
 					mapTypeId={google.maps.MapTypeId.TERRAIN}
 					options={{
+						mapId: HomePageConstants.MAP_ID,
 						streetViewControl: false,
 						fullscreenControl: false,
 						zoomControl: false,

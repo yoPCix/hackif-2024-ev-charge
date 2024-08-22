@@ -96,7 +96,7 @@ export const HeaderLayout: React.FC = () => {
 
 	return (
 		<React.Fragment>
-			<header className={cn("fixed w-full")}>
+			<header className={cn("fixed z-20 w-full")}>
 				<Box
 					variant="light"
 					className={cn("flex items-center border-b border-b-beige-500")}
