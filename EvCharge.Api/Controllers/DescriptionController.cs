@@ -1,6 +1,7 @@
 ﻿using System.ClientModel;
 using Azure;
 using Azure.AI.OpenAI;
+using EV.Charge.Models;
 using EvCharge.Api.Data;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,7 +18,9 @@ public class DescriptionController : ControllerBase
         _placesRepository = placesRepository;
         _openAiApiKey = configuration.GetValue<string>("OpenAiApiKey");
     }
+
     [HttpPost]
+    [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
     public async Task<IActionResult> GenerateDescription([FromBody] string[] placesIds)
     {
         if (placesIds == null || placesIds.Length == 0)
