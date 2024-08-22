@@ -1,7 +1,6 @@
 import { PlacesApiClient } from "@/api/PlacesApiClient";
 import { WaypointList } from "@/components/adhoc/WaypointList";
 import { useGoogleMaps } from "@/components/context/GoogleMapProvider";
-import { mockWaypoints } from "@/data/mock/waypoints";
 import { cn } from "@/utils/cn";
 import React from "react";
 import { useQuery } from "react-query";
@@ -14,6 +13,7 @@ export const StationsPage: React.FC = () => {
 		onSuccess: (places) => {
 			setMarkers(
 				places.map((place) => ({
+					id: place.id,
 					position: { lat: place.latitude, lng: place.longitude },
 				}))
 			);
@@ -29,7 +29,7 @@ export const StationsPage: React.FC = () => {
 					places?.map(({ name, address, ...item }) => ({
 						title: name,
 						subtitle: address,
-						power: 10,
+						power: "10kW",
 						...item,
 					})) ?? []
 				}

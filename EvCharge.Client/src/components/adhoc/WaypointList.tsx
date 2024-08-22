@@ -12,6 +12,8 @@ import {
 	TypographyUIWeight,
 } from "@ids/react-typography";
 import { useGoogleMaps } from "../context/GoogleMapProvider";
+import { useMutation } from "react-query";
+import { DescriptionApiClient } from "@/api/DescriptionApiClient";
 
 export type WaypointListProps = {
 	items: WaypointListItem[];
@@ -24,7 +26,7 @@ const WaypointListConstants = {
 };
 
 const getWaypointKey = (waypoint: WaypointListItem) =>
-	`${waypoint.title}|${waypoint.subtitle}`;
+	`${waypoint.title}|${waypoint.subtitle}|${waypoint.id}`;
 
 export const WaypointList: React.FC<WaypointListProps> = ({
 	items,
@@ -44,6 +46,11 @@ export const WaypointList: React.FC<WaypointListProps> = ({
 	};
 	const { map } = useGoogleMaps();
 
+	const { mutateAsync: getDescription } = useMutation({
+		mutationKey: ["description", "get"],
+		mutationFn: DescriptionApiClient.getTravelDescription,
+	});
+
 	return (
 		<div className={cn("relative h-[350px]")}>
 			<ul
@@ -59,7 +66,9 @@ export const WaypointList: React.FC<WaypointListProps> = ({
 						key={getWaypointKey(item)}
 						isWaypoint={isWaypoint}
 						handleCheck={() => toggleWaypoint(getWaypointKey(item))}
-						handleClick={() => {
+						handleClick={async () => {
+							const description = await getDescription([item.id]);
+							console.log(description);
 							setShowSelectedWaypoint(true);
 							setSelectedWaypoint(item);
 							map?.setCenter({ lat: item.latitude, lng: item.longitude });
@@ -109,54 +118,60 @@ export const WaypointList: React.FC<WaypointListProps> = ({
 					Back to all
 				</Button>
 				<div className={cn("flex flex-col gap-6 flex-grow")}>
-					<div className={cn("flex flex-col gap-2.5")}>
-						<div className={cn("flex items-center")}>
-							<TypographyHeading
-								size={TypographyHeadingSize.XX_SMALL}
-								className={cn("flex-grow")}
-							>
-								{selectedWaypoint?.title}
-							</TypographyHeading>
-							<TypographyUI
-								className={cn("flex items-center gap-0.5")}
-								size={TypographyUISize.SMALL}
-							>
-								<Product24CameraFlash />
-								{selectedWaypoint?.power}kW
-							</TypographyUI>
-						</div>
-						<TypographyUI size={TypographyUISize.SMALL} isQuiet>
-							{selectedWaypoint?.subtitle}
-						</TypographyUI>
-					</div>
-					<div className={cn("grid grid-cols-3 gap-y-1")}>
-						<TypographyUI
-							isQuiet
-							size={TypographyUISize.SMALL}
-							weight={TypographyUIWeight.BOLD}
-						>
-							Regular price:{" "}
-						</TypographyUI>
-						<TypographyUI className={cn("col-span-2")}>
-							<TypographyUI isQuiet weight={TypographyUIWeight.BOLD}>
-								0.553€
-							</TypographyUI>{" "}
-							kWh
-						</TypographyUI>
-						<TypographyUI size={TypographyUISize.LARGE}>
-							Your price:
-						</TypographyUI>
-						<TypographyUI
-							size={TypographyUISize.LARGE}
-							className={cn("col-span-2")}
-						>
-							<TypographyUI weight={TypographyUIWeight.BOLD}>
-								0.539€
-							</TypographyUI>{" "}
-							kWh
-						</TypographyUI>
-					</div>
-					<Button>Start charging</Button>
+					{selectedWaypoint?.power ? (
+						<React.Fragment>
+							<div className={cn("flex flex-col gap-2.5")}>
+								<div className={cn("flex items-center")}>
+									<TypographyHeading
+										size={TypographyHeadingSize.XX_SMALL}
+										className={cn("flex-grow")}
+									>
+										{selectedWaypoint?.title}
+									</TypographyHeading>
+									<TypographyUI
+										className={cn("flex items-center gap-0.5")}
+										size={TypographyUISize.SMALL}
+									>
+										<Product24CameraFlash />
+										{selectedWaypoint?.power}kW
+									</TypographyUI>
+								</div>
+								<TypographyUI size={TypographyUISize.SMALL} isQuiet>
+									{selectedWaypoint?.subtitle}
+								</TypographyUI>
+							</div>
+							<div className={cn("grid grid-cols-3 gap-y-1")}>
+								<TypographyUI
+									isQuiet
+									size={TypographyUISize.SMALL}
+									weight={TypographyUIWeight.BOLD}
+								>
+									Regular price:{" "}
+								</TypographyUI>
+								<TypographyUI className={cn("col-span-2")}>
+									<TypographyUI isQuiet weight={TypographyUIWeight.BOLD}>
+										0.553€
+									</TypographyUI>{" "}
+									kWh
+								</TypographyUI>
+								<TypographyUI size={TypographyUISize.LARGE}>
+									Your price:
+								</TypographyUI>
+								<TypographyUI
+									size={TypographyUISize.LARGE}
+									className={cn("col-span-2")}
+								>
+									<TypographyUI weight={TypographyUIWeight.BOLD}>
+										0.539€
+									</TypographyUI>{" "}
+									kWh
+								</TypographyUI>
+							</div>
+							<Button>Start charging</Button>
+						</React.Fragment>
+					) : (
+						<div>test</div>
+					)}
 				</div>
 			</Box>
 		</div>

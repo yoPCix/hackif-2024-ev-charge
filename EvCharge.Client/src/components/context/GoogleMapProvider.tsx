@@ -24,7 +24,7 @@ export type GoogleMapContext = {
 	MapView: ReactNode;
 	map?: google.maps.Map;
 	isLoaded: boolean;
-	setMarkers: Dispatch<SetStateAction<MarkerProps[]>>;
+	setMarkers: Dispatch<SetStateAction<({ id: string } & MarkerProps)[]>>;
 };
 
 const center: google.maps.LatLngLiteral = {
@@ -42,12 +42,17 @@ export const GoogleMapContext = createContext({} as GoogleMapContext);
 export const GoogleMapProvider: React.FC<PropsWithChildren> = ({
 	children,
 }) => {
-	const [markers, setMarkers] = useState<MarkerProps[]>([]);
+	const [markers, setMarkers] = useState<({ id: string } & MarkerProps)[]>([]);
 
 	const { coords, isGeolocationAvailable, isGeolocationEnabled } =
 		useGeolocated({
 			positionOptions: { enableHighAccuracy: true },
 			userDecisionTimeout: 10000,
+			onSuccess: ({ coords }) => {
+				if (map) {
+					map.setCenter({ lat: coords.latitude, lng: coords.longitude });
+				}
+			},
 		});
 	const { isLoaded } = useJsApiLoader({
 		id: "google-map-script",
@@ -57,8 +62,6 @@ export const GoogleMapProvider: React.FC<PropsWithChildren> = ({
 	const [map, setMap] = useState<google.maps.Map>();
 
 	const onLoad = useCallback((map: google.maps.Map) => {
-		map.setCenter(center);
-
 		setMap(map);
 	}, []);
 
@@ -90,7 +93,7 @@ export const GoogleMapProvider: React.FC<PropsWithChildren> = ({
 		>
 			{markers.map(({ position, ...marker }) => (
 				<Marker
-					key={`${position.lat}|${position.lng}`}
+					key={`${position.lat}|${position.lng}|${marker.id}`}
 					position={position}
 					{...marker}
 				/>

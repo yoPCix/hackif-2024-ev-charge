@@ -24,7 +24,8 @@ export const HomePage: React.FC = () => {
 		enabled: isLoaded,
 		onSuccess: async (stations) => {
 			setMarkers(
-				stations.map(({ latitude, longitude }) => ({
+				stations.map(({ id, latitude, longitude }) => ({
+					id,
 					position: { lat: latitude, lng: longitude },
 					clickable: true,
 					options: {},

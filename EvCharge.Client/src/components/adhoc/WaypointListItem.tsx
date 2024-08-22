@@ -11,9 +11,10 @@ import {
 import React, { useState } from "react";
 
 export type WaypointListItem = {
+	id: string;
 	title: string;
 	subtitle: string;
-	power?: number;
+	power?: string;
 	latitude: number;
 	longitude: number;
 };
@@ -60,7 +61,7 @@ export const WaypointListItem: React.FC<WaypointListItemProps> = ({
 							size={TypographyUISize.SMALL}
 						>
 							<Product24CameraFlash />
-							{power}kW
+							{power}
 						</TypographyUI>
 					)}
 				</div>

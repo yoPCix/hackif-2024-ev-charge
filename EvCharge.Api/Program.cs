@@ -20,7 +20,7 @@ app.UseCors(policy =>
     //if (app.Environment.IsDevelopment())
     //{
     policy.AllowAnyHeader();
-        policy.WithOrigins("http://localhost:5173");
+    policy.WithOrigins("http://localhost:5173");
     //}
 });
 
