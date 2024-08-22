@@ -1,44 +1,23 @@
 import { cn } from "@/utils/cn";
-import React, { useCallback, useEffect, useState } from "react";
+import React from "react";
 import { Box } from "@/components/ui/Box";
-import { GoogleMap, useJsApiLoader, Data } from "@react-google-maps/api";
-import { env } from "@/utils/env";
 import {
 	Product24CameraFlash,
 	Product24TimeShareAbroad,
 	Ui24User,
 } from "@ids/react-icons";
-import {
-	TypographyHeading,
-	TypographyUI,
-	TypographyUISize,
-} from "@ids/react-typography";
+import { TypographyUI, TypographyUISize } from "@ids/react-typography";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
 import { StationsApiClient } from "@/api/StationsApiClient";
-import { useGeolocated } from "react-geolocated";
-import { Loader, LoaderSize, LoaderType } from "@ids/react-loader";
-
-const center: google.maps.LatLngLiteral = {
-	lat: 56.95148884465696,
-	lng: 24.11329878216981,
-};
-
-const HomePageConstants = {
-	BOTTOM_OFFSET: 50,
-	MAP_ID: "127d18f654676a3b",
-};
+import {
+	GoogleMapConstants,
+	useGoogleMaps,
+} from "@/components/context/GoogleMapProvider";
 
 export const HomePage: React.FC = () => {
-	const { coords, isGeolocationAvailable, isGeolocationEnabled } =
-		useGeolocated({
-			positionOptions: { enableHighAccuracy: true },
-			userDecisionTimeout: 10000,
-		});
-	const { isLoaded } = useJsApiLoader({
-		id: "google-map-script",
-		googleMapsApiKey: env.VITE_GOOGLE_MAPS_API_KEY,
-	});
+	const { map, MapView } = useGoogleMaps();
+
 	const { data: stations } = useQuery({
 		queryKey: ["stations", "list"],
 		queryFn: async () => await StationsApiClient.getStations(),
@@ -54,7 +33,7 @@ export const HomePage: React.FC = () => {
 					glyphColor: "#1E88E5",
 					// glyph: "",
 				});
-
+				console.log(pin.element);
 				const marker = new MarkerLibrary.AdvancedMarkerElement({
 					map,
 					position: {
@@ -66,19 +45,6 @@ export const HomePage: React.FC = () => {
 			});
 		},
 	});
-
-	const [map, setMap] = useState<google.maps.Map | null>(null);
-
-	const onLoad = useCallback((map: google.maps.Map) => {
-		const bounds = new google.maps.LatLngBounds(center);
-		map.fitBounds(bounds);
-
-		setMap(map);
-	}, []);
-
-	const onUnmount = useCallback(() => {
-		setMap(null);
-	}, []);
 
 	const navigate = useNavigate();
 
@@ -100,59 +66,9 @@ export const HomePage: React.FC = () => {
 		},
 	];
 
-	useEffect(() => {
-		if (!map) {
-			return;
-		}
-
-		const run = async () => {};
-
-		run();
-	}, [map]);
-
 	return (
 		<div className={cn("flex flex-col items-stretch h-full")}>
-			{isLoaded ? (
-				<GoogleMap
-					id={HomePageConstants.MAP_ID}
-					mapContainerStyle={{
-						width: "100%",
-						height: `calc(100% - ${HomePageConstants.BOTTOM_OFFSET}px)`,
-					}}
-					center={center}
-					zoom={14}
-					onLoad={onLoad}
-					onUnmount={onUnmount}
-					mapTypeId={google.maps.MapTypeId.TERRAIN}
-					options={{
-						mapId: HomePageConstants.MAP_ID,
-						streetViewControl: false,
-						fullscreenControl: false,
-						zoomControl: false,
-						mapTypeControl: false,
-						mapTypeId: google.maps.MapTypeId.TERRAIN,
-					}}
-				/>
-			) : (
-				<div
-					className={cn(
-						"flex flex-col items-center justify-center h-full max-w-[90%] mx-auto"
-					)}
-				>
-					{!isGeolocationAvailable ? (
-						<TypographyHeading className={cn("text-center")}>
-							Geo-location is not available on your device
-						</TypographyHeading>
-					) : !isGeolocationEnabled ? (
-						<TypographyHeading className={cn("text-center")}>
-							Geo-location is not enabled on your browser
-						</TypographyHeading>
-					) : (
-						<Loader type={LoaderType.DOTS} size={LoaderSize.LARGE} />
-					)}
-				</div>
-			)}
-
+			{MapView}
 			<Box
 				variant="extra-light"
 				className={cn(
@@ -160,7 +76,7 @@ export const HomePage: React.FC = () => {
 					"rounded-2xl border border-beige-300"
 				)}
 				style={{
-					bottom: `calc(${HomePageConstants.BOTTOM_OFFSET}px + 1rem)`,
+					bottom: `calc(${GoogleMapConstants.BOTTOM_OFFSET}px + 1rem)`,
 				}}
 			>
 				{initialOptions.map(({ Logo, label, onClick }) => (
@@ -181,7 +97,7 @@ export const HomePage: React.FC = () => {
 				className={cn(
 					"fixed left-0 bottom-0 right-0 border-t border-t-beige-400"
 				)}
-				style={{ height: HomePageConstants.BOTTOM_OFFSET }}
+				style={{ height: GoogleMapConstants.BOTTOM_OFFSET }}
 			/>
 		</div>
 	);
