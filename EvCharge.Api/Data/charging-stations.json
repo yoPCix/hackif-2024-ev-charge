@@ -1,5 +1,7 @@
 [
 	{
+		"Id": "1",
+		"Brand": "Supercharge",
 		"GpsLocation": "56.62244550769715, 21.827600015202638",
 		"Address": "Ugāle, Latvia",
 		"Stalls": 10,
@@ -7,6 +9,8 @@
 		"Power": "50kW"
 	},
 	{
+		"Id": "2",
+		"Brand": "Supercharge",
 		"GpsLocation": "56.673408737617166, 22.0171141666006",
 		"Address": "Skrunda, Latvia",
 		"Stalls": 10,
@@ -14,6 +18,8 @@
 		"Power": "50kW"
 	},
 	{
+		"Id": "3",
+		"Brand": "Supercharge",
 		"GpsLocation": "57.1707023634294, 22.65809774771518",
 		"Address": "Lībagi, Latvia",
 		"Stalls": 10,
@@ -21,6 +27,8 @@
 		"Power": "50kW"
 	},
 	{
+		"Id": "4",
+		"Brand": "Supercharge",
 		"GpsLocation": "57.45364458568021, 22.88709401316268",
 		"Address": "Kaltene, Latvia",
 		"Stalls": 10,
@@ -28,6 +36,8 @@
 		"Power": "50kW"
 	},
 	{
+		"Id": "5",
+		"Brand": "Supercharge",
 		"GpsLocation": "57.67351381612848, 22.319924808287364",
 		"Address": "Mazirbe, Latvia",
 		"Stalls": 10,
@@ -35,6 +45,8 @@
 		"Power": "50kW"
 	},
 	{
+		"Id": "6",
+		"Brand": "Supercharge",
 		"GpsLocation": "57.811963265813, 24.345914538292618",
 		"Address": "Kuiviži, Latvia",
 		"Stalls": 10,
@@ -42,6 +54,8 @@
 		"Power": "50kW"
 	},
 	{
+		"Id": "7",
+		"Brand": "Supercharge",
 		"GpsLocation": "57.262641177168106, 24.41526574708445",
 		"Address": "Saulkrasti, Latvia",
 		"Stalls": 10,
@@ -49,6 +63,8 @@
 		"Power": "50kW"
 	},
 	{
+		"Id": "8",
+		"Brand": "Supercharge",
 		"GpsLocation": "57.51331339764295, 24.717561435571987",
 		"Address": "Limbaži, Latvia",
 		"Stalls": 10,
@@ -56,6 +72,8 @@
 		"Power": "50kW"
 	},
 	{
+		"Id": "9",
+		"Brand": "Supercharge",
 		"GpsLocation": "57.62617552317352, 25.693971336194064",
 		"Address": "Strenči, Latvia",
 		"Stalls": 10,
@@ -63,6 +81,8 @@
 		"Power": "50kW"
 	},
 	{
+		"Id": "10",
+		"Brand": "Supercharge",
 		"GpsLocation": "57.53958091838756, 26.694413797507583",
 		"Address": "Ape, Latvia",
 		"Stalls": 10,
@@ -70,6 +90,8 @@
 		"Power": "50kW"
 	},
 	{
+		"Id": "11",
+		"Brand": "Supercharge",
 		"GpsLocation": "",
 		"Address": ", Latvia",
 		"Stalls": 10,
@@ -77,6 +99,8 @@
 		"Power": "50kW"
 	},
 	{
+		"Id": "12",
+		"Brand": "Supercharge",
 		"GpsLocation": "",
 		"Address": ", Latvia",
 		"Stalls": 10,
@@ -84,6 +108,8 @@
 		"Power": "50kW"
 	},
 	{
+		"Id": "13",
+		"Brand": "Supercharge",
 		"GpsLocation": "",
 		"Address": ", Latvia",
 		"Stalls": 10,
@@ -91,6 +117,8 @@
 		"Power": "50kW"
 	},
 	{
+		"Id": "14",
+		"Brand": "Supercharge",
 		"GpsLocation": "",
 		"Address": ", Latvia",
 		"Stalls": 10,
@@ -98,6 +126,8 @@
 		"Power": "50kW"
 	},
 	{
+		"Id": "15",
+		"Brand": "Supercharge",
 		"GpsLocation": "",
 		"Address": ", Latvia",
 		"Stalls": 10,
@@ -105,6 +135,8 @@
 		"Power": "50kW"
 	},
 	{
+		"Id": "16",
+		"Brand": "Supercharge",
 		"GpsLocation": "",
 		"Address": ", Latvia",
 		"Stalls": 10,
@@ -112,6 +144,8 @@
 		"Power": "50kW"
 	},
 	{
+		"Id": "17",
+		"Brand": "Supercharge",
 		"GpsLocation": "",
 		"Address": ", Latvia",
 		"Stalls": 10,
@@ -119,6 +153,8 @@
 		"Power": "50kW"
 	},
 	{
+		"Id": "18",
+		"Brand": "Supercharge",
 		"GpsLocation": "",
 		"Address": ", Latvia",
 		"Stalls": 10,
@@ -126,6 +162,8 @@
 		"Power": "50kW"
 	},
 	{
+		"Id": "19",
+		"Brand": "Supercharge",
 		"GpsLocation": "",
 		"Address": ", Latvia",
 		"Stalls": 10,
@@ -133,6 +171,8 @@
 		"Power": "50kW"
 	},
 	{
+		"Id": "20",
+		"Brand": "Supercharge",
 		"GpsLocation": "",
 		"Address": ", Latvia",
 		"Stalls": 10,
@@ -140,6 +180,8 @@
 		"Power": "50kW"
 	},
 	{
+		"Id": "21",
+		"Brand": "Supercharge",
 		"GpsLocation": "",
 		"Address": ", Latvia",
 		"Stalls": 10,
@@ -147,6 +189,8 @@
 		"Power": "50kW"
 	},
 	{
+		"Id": "22",
+		"Brand": "Supercharge",
 		"GpsLocation": "",
 		"Address": ", Latvia",
 		"Stalls": 10,
@@ -154,6 +198,8 @@
 		"Power": "50kW"
 	},
 	{
+		"Id": "23",
+		"Brand": "Supercharge",
 		"GpsLocation": "",
 		"Address": ", Latvia",
 		"Stalls": 10,
@@ -161,6 +207,8 @@
 		"Power": "50kW"
 	},
 	{
+		"Id": "24",
+		"Brand": "Supercharge",
 		"GpsLocation": "",
 		"Address": ", Latvia",
 		"Stalls": 10,

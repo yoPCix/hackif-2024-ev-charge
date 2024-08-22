@@ -1,10 +1,10 @@
 using EV.Charge.Models;
+using EvCharge.Api.Helpers;
+using EvCharge.Api.Models;
 using GMap.NET;
-using GMap.NET.MapProviders;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using System.Text;
-using EvCharge.Api.Models;
+using IOFile = System.IO.File;
 
 namespace EvCharge.Api.Controllers;
 
@@ -12,34 +12,23 @@ namespace EvCharge.Api.Controllers;
 [Route("api/[controller]")]
 public class PlacesController : ControllerBase
 {
-    private readonly ILogger<StationsController> _logger;
+    private const string RawPlacesPath = "Data/sightseeing.json";
+    private const string SavedPlaces = "saved-places.json";
+    private readonly ILogger<PlacesController> _logger;
 
-    public PlacesController(ILogger<StationsController> logger)
+    public PlacesController(ILogger<PlacesController> logger)
     {
         _logger = logger;
+        IOFile.Delete(SavedPlaces);
     }
 
     [HttpGet]
     [ProducesResponseType(typeof(SightseeingPlace[]), StatusCodes.Status200OK)]
     public async Task<IActionResult> Get()
     {
-        // read data from charging-stations.json
+        // read data from sightseeing.json
         var places = await GetAllPlacesAsync();
         return Ok(places);
-    }
-
-    private static async Task<List<SightseeingPlace>?> GetAllPlacesAsync()
-    {
-        var rawPlaces = JsonConvert.DeserializeObject<List<SightseeingPlaceRaw>>(
-            await System.IO.File.ReadAllTextAsync("Data/sightseeing.json"));
-
-        return rawPlaces.Select(rawPlace => new SightseeingPlace
-        {
-            Address = rawPlace.Address,
-            Name = rawPlace.Name,
-            Latitude = double.Parse(rawPlace.GpsLocation.Split(',')[0]),
-            Longitude = double.Parse(rawPlace.GpsLocation.Split(',')[1]),
-        }).ToList();
     }
 
     [HttpPost("within/{distanceMeters}")]
@@ -72,112 +61,43 @@ public class PlacesController : ControllerBase
             if (linealRoute < num)
                 num = linealRoute;
         }
+
         return new double?(num);
     }
-}
 
-/// <summary>
-/// Google Polyline Converter (Encoder and Decoder)
-/// </summary>
-public static class GooglePolylineConverter
-{
-    /// <summary>
-    /// Decodes the specified polyline string.
-    /// </summary>
-    /// <param name="polylineString">The polyline string.</param>
-    /// <returns>A list with Locations</returns>
-    public static IEnumerable<PointLatLng> Decode(string polylineString)
+
+
+    private async Task<IList<SightseeingPlace>> GetAllPlacesAsync()
     {
-        if (string.IsNullOrEmpty(polylineString))
-            throw new ArgumentNullException(nameof(polylineString));
-
-        var polylineChars = polylineString.ToCharArray();
-        var index = 0;
-
-        var currentLat = 0;
-        var currentLng = 0;
-
-        while (index < polylineChars.Length)
+        if (await Task.Run(() => IOFile.Exists(SavedPlaces)))
         {
-            // Next lat
-            var sum = 0;
-            var shifter = 0;
-            int nextFiveBits;
-            do
-            {
-                nextFiveBits = polylineChars[index++] - 63;
-                sum |= (nextFiveBits & 31) << shifter;
-                shifter += 5;
-            } while (nextFiveBits >= 32 && index < polylineChars.Length);
-
-            if (index >= polylineChars.Length)
-                break;
-
-            currentLat += (sum & 1) == 1 ? ~(sum >> 1) : (sum >> 1);
-
-            // Next lng
-            sum = 0;
-            shifter = 0;
-            do
-            {
-                nextFiveBits = polylineChars[index++] - 63;
-                sum |= (nextFiveBits & 31) << shifter;
-                shifter += 5;
-            } while (nextFiveBits >= 32 && index < polylineChars.Length);
-
-            if (index >= polylineChars.Length && nextFiveBits >= 32)
-                break;
-
-            currentLng += (sum & 1) == 1 ? ~(sum >> 1) : (sum >> 1);
-
-            yield return new PointLatLng(Convert.ToDouble(currentLat) / 1E5,
-                Convert.ToDouble(currentLng) / 1E5
-            );
+            return JsonConvert.DeserializeObject<List<SightseeingPlace>>(
+                await System.IO.File.ReadAllTextAsync(SavedPlaces));
         }
+
+        var rawPlaces =
+            JsonConvert.DeserializeObject<List<SightseeingPlaceRaw>>(
+                await System.IO.File.ReadAllTextAsync(RawPlacesPath));
+
+        var places = rawPlaces.Where(rawPlace => !string.IsNullOrEmpty(rawPlace.GpsLocation)).Select(rawPlace =>
+            new SightseeingPlace
+            {
+                Id = rawPlace.Id,
+                Address = rawPlace.Address,
+                Name = rawPlace.Name,
+                Latitude = double.Parse(rawPlace.GpsLocation.Split(',')[0]),
+                Longitude = double.Parse(rawPlace.GpsLocation.Split(',')[1]),
+                Website = rawPlace.Website,
+                Description = rawPlace.Description
+            }).ToList();
+
+        await IOFile.WriteAllTextAsync(SavedPlaces, JsonConvert.SerializeObject(places));
+
+        return places;
     }
 
-    /// <summary>
-    /// Encodes the specified locations list.
-    /// </summary>
-    /// <param name="locations">The locations.</param>
-    /// <returns>The polyline string.</returns>
-    public static string Encode(IEnumerable<PointLatLng> locations)
+    private async Task SaveAllPlacesAsync(IEnumerable<SightseeingPlace> places)
     {
-        var str = new StringBuilder();
-
-        var encodeDiff = (Action<int>)(diff =>
-        {
-            var shifted = diff << 1;
-            if (diff < 0)
-                shifted = ~shifted;
-
-            var rem = shifted;
-
-            while (rem >= 0x20)
-            {
-                str.Append((char)((0x20 | (rem & 0x1f)) + 63));
-
-                rem >>= 5;
-            }
-
-            str.Append((char)(rem + 63));
-        });
-
-        var lastLat = 0;
-        var lastLng = 0;
-
-        foreach (var point in locations)
-        {
-            var lat = (int)Math.Round(point.Lat * 1E5);
-            var lng = (int)Math.Round(point.Lng * 1E5);
-
-            encodeDiff(lat - lastLat);
-            encodeDiff(lng - lastLng);
-
-            lastLat = lat;
-            lastLng = lng;
-        }
-
-        return str.ToString();
+        await IOFile.WriteAllTextAsync(SavedPlaces, JsonConvert.SerializeObject(places));
     }
 }
